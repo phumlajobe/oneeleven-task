@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>One Eleven — API Validator</title>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <div class="container">
@@ -49,7 +49,7 @@
             <!-- Local Test Section -->
             <div class="field">
                 <label for="testInput">Test your endpoint directly</label>
-                <input type="text" id="testInput" placeholder='{ "data": "example" }' autocomplete="off" />
+                <input type="text" id="testInput" placeholder='{ data: "example" }' autocomplete="off" />
             </div>
 
             <button id="localTestBtn" class="btn-outline" onclick="runLocalTest()">

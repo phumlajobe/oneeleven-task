@@ -61,21 +61,23 @@ async function runLocalTest() {
     }
 
     if (!testInput) {
-        showResult(result, resultLabel, resultBody, 'error', 'Missing Input', 'Please enter JSON like: { "data": "example" }');
+        showResult(result, resultLabel, resultBody, 'error', 'Missing Input', 'Please enter input like: { data: "example" }');
         return;
     }
 
-    // Parse the JSON and extract just the "data" field value
+    // Parse input - support both { data: "example" } and { "data": "example" }
     let parsedData;
     try {
-        const parsed = JSON.parse(testInput);
+        // Add quotes around unquoted keys: { data: "x" } → { "data": "x" }
+        const jsonString = testInput.replace(/([{,]\s*)([a-zA-Z_][a-zA-Z0-9_]*)(\s*:)/g, '$1"$2"$3');
+        const parsed = JSON.parse(jsonString);
         if (!parsed.data || typeof parsed.data !== 'string') {
-            showResult(result, resultLabel, resultBody, 'error', 'Invalid JSON', 'Your JSON must have a "data" field with a string value.\nExample: { "data": "example" }');
+            showResult(result, resultLabel, resultBody, 'error', 'Invalid Input', 'Your input must have a data field with a string value.\nExample: { data: "example" }');
             return;
         }
         parsedData = parsed.data;
     } catch (e) {
-        showResult(result, resultLabel, resultBody, 'error', 'Invalid JSON', 'Could not parse your input as JSON.\nMake sure it looks like: { "data": "example" }');
+        showResult(result, resultLabel, resultBody, 'error', 'Invalid Input', 'Could not parse your input.\nMake sure it looks like: { data: "example" }');
         return;
     }
 
