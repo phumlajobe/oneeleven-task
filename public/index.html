@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>One Eleven — API Validator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+    <div class="container">
+
+        <header class="header">
+            <div class="logo-row">
+                <div class="logo-dot"></div>
+                <span class="logo-text">One Eleven — Dev Task</span>
+            </div>
+            <h1>API <span>Validator</span></h1>
+            <p class="subtitle">// test your sort endpoint against the One Eleven checker</p>
+        </header>
+
+        <div class="card">
+
+            <!-- Validation Section -->
+            <div class="field">
+                <label for="email">Your Email Address</label>
+                <input type="email" id="email" placeholder="phumlasj@gmail.com" autocomplete="off" />
+            </div>
+
+            <div class="field">
+                <label for="apiUrl">Your API Endpoint URL</label>
+                <input type="url" id="apiUrl" placeholder="https://your-app.vercel.app/api/sort" autocomplete="off" />
+            </div>
+
+            <button id="submitBtn" onclick="runValidation()">
+                <div class="btn-inner">
+                    <div class="spinner" id="spinner"></div>
+                    <span id="btnText">Run Validation →</span>
+                </div>
+            </button>
+
+            <div class="result" id="result">
+                <div class="result-label" id="resultLabel"></div>
+                <div class="result-body" id="resultBody"></div>
+            </div>
+
+            <div class="divider">or test locally</div>
+
+            <!-- Local Test Section -->
+            <div class="field">
+                <label for="testInput">Test your endpoint directly</label>
+                <input type="text" id="testInput" placeholder='{ "data": "example" }' autocomplete="off" />
+            </div>
+
+            <button id="localTestBtn" class="btn-outline" onclick="runLocalTest()">
+                <div class="btn-inner">
+                    <div class="spinner" id="localSpinner"></div>
+                    <span id="localBtnText">Test Locally →</span>
+                </div>
+            </button>
+
+            <div class="result" id="localResult">
+                <div class="result-label" id="localResultLabel"></div>
+                <div class="result-body" id="localResultBody"></div>
+            </div>
+
+        </div>
+
+        <p class="footer">Built for One Eleven — Junior Developer Application 2026</p>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
